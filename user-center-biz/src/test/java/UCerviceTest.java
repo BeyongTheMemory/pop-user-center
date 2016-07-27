@@ -27,6 +27,7 @@ public class UCerviceTest {
         UserDto userDto = new UserDto();
         userDto.setAccount("1111");
         userDto.setPassword("ssss");
+        userDto.setName("aa");
         userService.regist(userDto);
 
 

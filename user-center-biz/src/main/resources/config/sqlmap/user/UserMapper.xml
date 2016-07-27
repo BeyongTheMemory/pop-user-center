@@ -7,14 +7,14 @@
 	</sql>
 
 
-	<insert id="save" parameterType="com.yunma.uc.entity.User" useGeneratedKeys="true" keyProperty="userId">
+	<insert id="save" parameterType="com.pop.uc.entity.UserEntity" useGeneratedKeys="true" keyProperty="userId">
 		INSERT INTO uc_basic
 		(
 		id,account,password,name,head_url,introduction
 		)
 		VALUES
 		(
-        #{id},#{account},#{password},#{name},#{head_url},#{introduction}
+        #{id},#{account},#{password},#{name},#{headUrl},#{introduction}
 		)
 	</insert>
 

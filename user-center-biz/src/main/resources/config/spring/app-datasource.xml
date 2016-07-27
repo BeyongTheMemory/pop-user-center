@@ -14,15 +14,6 @@
     http://www.springframework.org/schema/tx
     http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <bean id="log-filter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
-        <property name="resultSetLogEnabled" value="false"/>
-        <property name="dataSourceLogEnabled" value="false"/>
-        <property name="connectionLogEnabled" value="false"/>
-        <property name="statementExecutableSqlLogEnable" value="true"/>
-    </bean>
-
-
-
 
     <!--open platform  data source -->
     <bean id="userDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
@@ -48,11 +39,6 @@
         <property name="testOnBorrow" value="${uc.testOnBorrow}"/>
         <property name="testOnReturn" value="${uc.testOnReturn}"/>
         <property name="validationQuery" value="${uc.validationQuery}"/>
-        <property name="proxyFilters">
-            <list>
-                <ref bean="log-filter"/>
-            </list>
-        </property>
     </bean>
 
 
@@ -61,13 +47,18 @@
     <bean id="userSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="userDataSource" />
         <property name="mapperLocations" value="classpath:config/sqlmap/user/*.xml" />
-        <property name="configLocation" value="classpath:/mybatis/app-mybatis.xml" />
+        <property name="configLocation" value="classpath:mybatis/app-mybatis.xml" />
         <property name="typeAliasesPackage" value="com.pop.uc.entity" />
     </bean>
     <!-- mapper interface -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+  <!--  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="userSqlSessionFactory"/>
         <property name="basePackage" value="com.pop.uc.dao"/>
+    </bean>-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.pop.uc.dao" />
+        <property name="annotationClass" value="org.springframework.stereotype.Repository" />
+        <property name="sqlSessionFactoryBeanName" value="userSqlSessionFactory" />
     </bean>
 
 

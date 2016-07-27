@@ -18,6 +18,15 @@
             <groupId>com.pop</groupId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.pop</groupId>
+            <artifactId>pop-common</artifactId>
+        </dependency>
+        <!--mysql-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
         <!--dubbo-->
         <dependency>
             <groupId>com.alibaba</groupId>

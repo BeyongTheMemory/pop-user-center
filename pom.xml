@@ -22,6 +22,18 @@
 
     <dependencyManagement>
         <dependencies>
+            <!---->
+            <dependency>
+                <groupId>com.pop</groupId>
+                <artifactId>pop-common</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <!-- 导入Mysql数据库链接jar包 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.30</version>
+            </dependency>
             <!-- spring framework dependencies begin -->
             <dependency>
                 <groupId>org.springframework</groupId>

@@ -18,9 +18,9 @@
        <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
 
 
-       <bean id="marketPropertyConfigurer"
+       <bean id="ucPropertyConfigurer"
              class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-              <property name="locations" value="classpath*:properties/db.properties"/>
+              <property name="locations" value="classpath*:properties/*.properties"/>
               <property name="ignoreUnresolvablePlaceholders" value="true"/>
        </bean>
        <import resource="classpath*:config/spring/*.xml"/>
