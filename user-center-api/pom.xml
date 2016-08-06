@@ -8,6 +8,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>user-center-api</artifactId>
+    <dependencies>
+    <!-- spring framework -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+    </dependency>
 
-
+    <dependency>
+        <groupId>com.pop</groupId>
+        <artifactId>pop-common</artifactId>
+    </dependency>
+    </dependencies>
 </project>

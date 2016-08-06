@@ -1,6 +1,7 @@
 package com.pop.uc.dao;
 
 import com.pop.uc.entity.UserEntity;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,4 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDao {
     public int save(UserEntity userEntity);
+    public int getUserCountByAccount(String account);
+    public UserEntity getUserByAccountAndPassword(@Param("account")String account,@Param("password")String password);
 }

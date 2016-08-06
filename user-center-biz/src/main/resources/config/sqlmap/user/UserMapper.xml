@@ -3,11 +3,11 @@
 <mapper namespace="com.pop.uc.dao.UserDao">
 
 	<sql id="Base_Column_List">
-		id,account,password,name,head_url,introduction
+		id,account,password,name,head_url,introduction,state,update_time,add_time
 	</sql>
 
 
-	<insert id="save" parameterType="com.pop.uc.entity.UserEntity" useGeneratedKeys="true" keyProperty="userId">
+	<insert id="save" parameterType="com.pop.uc.entity.UserEntity" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO uc_basic
 		(
 		id,account,password,name,head_url,introduction
@@ -17,6 +17,20 @@
         #{id},#{account},#{password},#{name},#{headUrl},#{introduction}
 		)
 	</insert>
+
+
+	<select id="getUserByAccountAndPassword" parameterType="java.util.Map" resultType="com.pop.uc.entity.UserEntity">
+		SELECT <include refid="Base_Column_List"/>
+		FROM uc_basic
+		WHERE account = #{account} AND password = #{password} AND state = 1 limit 1
+	</select>
+
+	<select id="getUserCountByAccount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT count(1)
+		FROM uc_basic
+		WHERE account = #{account} AND state = 1 limit 1
+	</select>
+
 
 
 
