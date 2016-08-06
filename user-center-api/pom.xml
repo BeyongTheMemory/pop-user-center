@@ -9,11 +9,6 @@
 
     <artifactId>user-center-api</artifactId>
     <dependencies>
-    <!-- spring framework -->
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-core</artifactId>
-    </dependency>
 
     <dependency>
         <groupId>com.pop</groupId>
