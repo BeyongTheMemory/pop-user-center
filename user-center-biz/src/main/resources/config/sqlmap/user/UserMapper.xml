@@ -10,11 +10,11 @@
 	<insert id="save" parameterType="com.pop.uc.entity.UserEntity" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO uc_basic
 		(
-		id,account,password,name,head_url,introduction
+		account,password,name,head_url,introduction
 		)
 		VALUES
 		(
-        #{id},#{account},#{password},#{name},#{headUrl},#{introduction}
+        #{account},#{password},#{name},#{headUrl},#{introduction}
 		)
 	</insert>
 

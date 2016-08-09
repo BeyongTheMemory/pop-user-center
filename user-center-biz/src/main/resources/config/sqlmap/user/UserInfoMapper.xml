@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pop.uc.dao.UserInfoDao">
+
+	<sql id="Base_Column_List">
+		id,user_id,phone,real_name,id_number
+	</sql>
+
+
+	<insert id="save" parameterType="com.pop.uc.entity.UserInfoEntity" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO uc_infore
+		(
+		user_id,phone,real_name,id_number
+		)
+		VALUES
+		(
+        #{userId},#{phone},#{realName},#{idNumber}
+		)
+	</insert>
+
+
+	<select id="getUserByAccountAndPassword" parameterType="java.util.Map" resultType="com.pop.uc.entity.UserInfoEntity">
+		SELECT <include refid="Base_Column_List"/>
+		FROM uc_infore
+		WHERE user_id = #{userId} limit 1
+	</select>
+
+
+
+
+
+
+</mapper>
