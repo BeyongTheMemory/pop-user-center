@@ -31,7 +31,21 @@
 		WHERE account = #{account} AND state = 1 limit 1
 	</select>
 
-
+	<update id="update" parameterType="com.pop.uc.entity.UserEntity">
+		UPDATE uc_basic
+		<set>
+			<if test="name != null">
+				name = #{name}
+			</if>
+			<if test="headUrl != null">
+				head_url = #{headUrl}
+			</if>
+			<if test="name != null">
+				introduction = #{introduction}
+			</if>
+		</set>
+		where id = #{id}
+	</update>
 
 
 

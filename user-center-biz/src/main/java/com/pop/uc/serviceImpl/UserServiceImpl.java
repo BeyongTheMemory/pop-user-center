@@ -63,6 +63,12 @@ public class UserServiceImpl implements UserService {
         return userInfoDto;
     }
 
+    public void update(UserDto user){
+        UserEntity userEntity = new UserEntity();
+        BeanUtils.copyProperties(user,userEntity);
+        userDao.update(userEntity);
+    }
+
 
     private void registCheck(UserDto userDto){
             Preconditions.checkArgument(userDao.getUserCountByAccount(userDto.getAccount()) < 1, "用户已存在");

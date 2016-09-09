@@ -11,5 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface UserDao {
     public int save(UserEntity userEntity);
     public int getUserCountByAccount(String account);
+    public int update(UserEntity userEntity);
     public UserEntity getUserByAccountAndPassword(@Param("account")String account,@Param("password")String password);
 }

@@ -46,7 +46,7 @@
 
     <bean id="userSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="userDataSource" />
-        <property name="mapperLocations" value="classpath:config/sqlmap/user/*.xml" />
+        <property name="mapperLocations" value="classpath:config/sqlmap/*/*.xml" />
         <property name="configLocation" value="classpath:mybatis/app-mybatis.xml" />
         <property name="typeAliasesPackage" value="com.pop.uc.entity" />
     </bean>

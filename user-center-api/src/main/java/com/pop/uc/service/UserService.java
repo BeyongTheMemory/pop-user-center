@@ -11,4 +11,5 @@ public interface UserService {
     public UserDto login(String userName,String password,String ip);
     public boolean regist(UserDto user);
     public UserInfoDto getUserInfoByUserId(long userId);
+    public void update(UserDto user);
 }
