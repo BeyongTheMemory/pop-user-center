@@ -35,16 +35,22 @@
 		UPDATE uc_basic
 		<set>
 			<if test="name != null">
-				name = #{name}
+				name = #{name},
 			</if>
 			<if test="headUrl != null">
-				head_url = #{headUrl}
+				head_url = #{headUrl},
 			</if>
-			<if test="name != null">
-				introduction = #{introduction}
+			<if test="introduction != null">
+				introduction = #{introduction},
 			</if>
 		</set>
 		where id = #{id}
+	</update>
+
+	<update id="updatePwd" parameterType="java.util.Map">
+		UPDATE uc_basic
+		SET password = #{newPassword}
+		WHERE account = #{account} AND password = #{oldPassword} AND state = 1
 	</update>
 
 

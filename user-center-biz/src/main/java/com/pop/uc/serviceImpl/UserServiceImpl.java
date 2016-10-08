@@ -54,6 +54,11 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
+    public void updatePwd(String account, String oldPassword,String newPassword){
+        int reult = userDao.updatePwd(account,Encrypt.MD5(oldPassword),Encrypt.MD5(newPassword));
+        Preconditions.checkArgument(reult > 0, "原密码错误");
+    }
+
     public UserInfoDto getUserInfoByUserId(long userId){
         UserInfoEntity userInfoEntity = userInfoDao.getByUserId(userId);
         UserInfoDto userInfoDto = new UserInfoDto();
@@ -67,6 +72,13 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = new UserEntity();
         BeanUtils.copyProperties(user,userEntity);
         userDao.update(userEntity);
+    }
+
+    public void updateUserInfo(UserInfoDto userInfoDto){
+        UserInfoEntity userInfoEntity = new UserInfoEntity();
+        BeanUtils.copyProperties(userInfoDto,userInfoEntity);
+        userInfoDao.update(userInfoEntity);
+
     }
 
 

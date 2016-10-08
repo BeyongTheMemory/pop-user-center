@@ -3,18 +3,18 @@
 <mapper namespace="com.pop.uc.dao.UserDao">
 
 	<sql id="Base_Column_List">
-		id,account,password,name,head_url,introduction,state,update_time,add_time
+		id,account,password,name,head_url,introduction,state,update_time,add_time,sex
 	</sql>
 
 
 	<insert id="save" parameterType="com.pop.uc.entity.UserEntity" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO uc_basic
 		(
-		account,password,name,head_url,introduction
+		account,password,name,head_url,introduction,sex
 		)
 		VALUES
 		(
-        #{account},#{password},#{name},#{headUrl},#{introduction}
+        #{account},#{password},#{name},#{headUrl},#{introduction},#{sex}
 		)
 	</insert>
 
@@ -35,16 +35,25 @@
 		UPDATE uc_basic
 		<set>
 			<if test="name != null">
-				name = #{name}
+				name = #{name},
 			</if>
 			<if test="headUrl != null">
-				head_url = #{headUrl}
+				head_url = #{headUrl},
 			</if>
-			<if test="name != null">
-				introduction = #{introduction}
+			<if test="introduction != null">
+				introduction = #{introduction},
+			</if>
+			<if test="sex > 0">
+				sex = #{sex},
 			</if>
 		</set>
 		where id = #{id}
+	</update>
+
+	<update id="updatePwd" parameterType="java.util.Map">
+		UPDATE uc_basic
+		SET password = #{newPassword}
+		WHERE account = #{account} AND password = #{oldPassword} AND state = 1
 	</update>
 
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserInfoDao {
-    public void save(UserInfoEntity userInfoEntity);
-    public UserInfoEntity getByUserId(@Param("userId")long uesrId);
+    void save(UserInfoEntity userInfoEntity);
+    UserInfoEntity getByUserId(@Param("userId")long uesrId);
+    void update(UserInfoEntity userInfoEntity);
 }

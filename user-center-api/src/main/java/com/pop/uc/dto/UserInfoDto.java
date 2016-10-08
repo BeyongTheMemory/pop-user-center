@@ -11,6 +11,8 @@ public class UserInfoDto implements Serializable{
     private long phone;
     private String realName;
     private String idNumber;
+    private String email;
+
 
     public long getId() {
         return id;
@@ -50,5 +52,13 @@ public class UserInfoDto implements Serializable{
 
     public void setIdNumber(String idNumber) {
         this.idNumber = idNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

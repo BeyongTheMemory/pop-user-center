@@ -25,6 +25,19 @@
 		WHERE user_id = #{userId} limit 1
 	</select>
 
+	<update id="update" parameterType="com.pop.uc.entity.UserInfoEntity">
+		UPDATE uc_infore
+		<set>
+			<if test="phone != 0">
+				phone = #{phone},
+			</if>
+			<if test="email != null">
+				email = #{email},
+			</if>
+		</set>
+		where user_id = #{userId}
+	</update>
+
 
 
 

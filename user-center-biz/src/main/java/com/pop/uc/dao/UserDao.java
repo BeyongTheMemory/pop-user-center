@@ -13,4 +13,5 @@ public interface UserDao {
     public int getUserCountByAccount(String account);
     public int update(UserEntity userEntity);
     public UserEntity getUserByAccountAndPassword(@Param("account")String account,@Param("password")String password);
+    public int updatePwd(@Param("account")String account,@Param("oldPassword")String oldPassword,@Param("newPassword")String newPassword);
 }

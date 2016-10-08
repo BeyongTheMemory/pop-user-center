@@ -10,6 +10,7 @@ public class UserEntity {
     private String name;
     private String headUrl;
     private String introduction;
+    private int sex = 0;
 
     public long getId() {
         return id;
@@ -57,5 +58,13 @@ public class UserEntity {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
     }
 }
