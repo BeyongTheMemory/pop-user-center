@@ -3,18 +3,18 @@
 <mapper namespace="com.pop.uc.dao.UserDao">
 
 	<sql id="Base_Column_List">
-		id,account,password,name,head_url,introduction,state,update_time,add_time
+		id,account,password,name,head_url,introduction,state,update_time,add_time,sex
 	</sql>
 
 
 	<insert id="save" parameterType="com.pop.uc.entity.UserEntity" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO uc_basic
 		(
-		account,password,name,head_url,introduction
+		account,password,name,head_url,introduction,sex
 		)
 		VALUES
 		(
-        #{account},#{password},#{name},#{headUrl},#{introduction}
+        #{account},#{password},#{name},#{headUrl},#{introduction},#{sex}
 		)
 	</insert>
 
@@ -42,6 +42,9 @@
 			</if>
 			<if test="introduction != null">
 				introduction = #{introduction},
+			</if>
+			<if test="sex > 0">
+				sex = #{sex},
 			</if>
 		</set>
 		where id = #{id}

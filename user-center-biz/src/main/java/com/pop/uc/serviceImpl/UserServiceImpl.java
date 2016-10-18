@@ -4,13 +4,16 @@ package com.pop.uc.serviceImpl;
 import com.google.common.base.Preconditions;
 import com.pop.exception.ExceptionInfoGetter;
 import com.pop.uc.asyn.LogQueue;
+import com.pop.uc.asyn.MobileQueue;
 import com.pop.uc.dao.UserDao;
 import com.pop.uc.dao.UserInfoDao;
+import com.pop.uc.dto.LoginDto;
 import com.pop.uc.dto.UserDto;
 import com.pop.uc.dto.UserInfoDto;
 import com.pop.uc.entity.LoginLogEntity;
 import com.pop.uc.entity.UserEntity;
 import com.pop.uc.entity.UserInfoEntity;
+import com.pop.uc.entity.UserMobileEntity;
 import com.pop.uc.exception.UcBasicException;
 import com.pop.uc.service.UserService;
 import com.pop.uc.util.Encrypt;
@@ -31,14 +34,17 @@ public class UserServiceImpl implements UserService {
     private UserInfoDao userInfoDao;
     @Autowired
     private LogQueue logQueue;
+    @Autowired
+    private MobileQueue mobileQueue;
 
-    public UserDto login(String userName, String password,String ip) {
-        password = Encrypt.MD5(password);
-        UserEntity userEntity = userDao.getUserByAccountAndPassword(userName, password);
+    public UserDto login(LoginDto loginDto) {
+        String password = Encrypt.MD5(loginDto.getPassword());
+        UserEntity userEntity = userDao.getUserByAccountAndPassword(loginDto.getUserName(), password);
         Preconditions.checkArgument(userEntity != null, "用户名或密码错误");
         UserDto user = new UserDto();
         BeanUtils.copyProperties(userEntity, user);
-        logQueue.put(new LoginLogEntity(user.getId(),ip));//记录登录日志
+        logQueue.put(new LoginLogEntity(user.getId(), loginDto.getIp()));//记录登录日志
+        mobileQueue.put(new UserMobileEntity(user.getId(),loginDto.getClintId(),loginDto.getClientType()));//记录设备标示
         return user;
     }
 

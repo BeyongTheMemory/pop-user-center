@@ -1,5 +1,6 @@
 package com.pop.uc.service;
 
+import com.pop.uc.dto.LoginDto;
 import com.pop.uc.dto.UserDto;
 import com.pop.uc.dto.UserInfoDto;
 
@@ -8,7 +9,7 @@ import com.pop.uc.dto.UserInfoDto;
  * 用户登录注册等基础功能
  */
 public interface UserService {
-    UserDto login(String userName, String password, String ip);
+    UserDto login(LoginDto loginDto);
 
     boolean regist(UserDto user);
 

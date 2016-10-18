@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pop.uc.dao.UserMobileDao">
+
+    <sql id="Base_Column_List">
+		id,user_id,client_id,client_type
+	</sql>
+
+
+    <insert id="save" parameterType="com.pop.uc.entity.UserMobileEntity">
+	INSERT INTO uc_mobile
+	 (user_id,
+	 client_id,
+	 client_type)
+	 VALUES
+	 (#{userId},
+	 #{clientId},
+	 #{clientType})
+     ON DUPLICATE KEY
+     UPDATE
+     client_id=#{clientId},
+     client_type=#{clientType};
+	</insert>
+
+	<select id="getByUserId" parameterType="java.util.Map" resultType="com.pop.uc.entity.UserMobileEntity">
+		SELECT <include refid="Base_Column_List"/>
+		FROM uc_mobile
+		WHERE user_id = #{userId}
+	</select>
+
+
+
+</mapper>
