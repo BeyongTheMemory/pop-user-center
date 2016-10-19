@@ -6,18 +6,18 @@ import java.io.Serializable;
  * Created by xugang on 16/10/18.
  */
 public class LoginDto implements Serializable {
-    private String userName;
+    private String account;
     private String password;
     private String ip;
     private String clintId;
     private int clientType;//1:android,2:ios
 
-    public String getUserName() {
-        return userName;
+    public String getAccount() {
+        return account;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getPassword() {

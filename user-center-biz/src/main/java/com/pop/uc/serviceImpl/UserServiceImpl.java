@@ -39,12 +39,14 @@ public class UserServiceImpl implements UserService {
 
     public UserDto login(LoginDto loginDto) {
         String password = Encrypt.MD5(loginDto.getPassword());
-        UserEntity userEntity = userDao.getUserByAccountAndPassword(loginDto.getUserName(), password);
+        UserEntity userEntity = userDao.getUserByAccountAndPassword(loginDto.getAccount(), password);
         Preconditions.checkArgument(userEntity != null, "用户名或密码错误");
         UserDto user = new UserDto();
         BeanUtils.copyProperties(userEntity, user);
         logQueue.put(new LoginLogEntity(user.getId(), loginDto.getIp()));//记录登录日志
-        mobileQueue.put(new UserMobileEntity(user.getId(),loginDto.getClintId(),loginDto.getClientType()));//记录设备标示
+        if(!StringUtils.isEmpty(loginDto.getClintId())) {
+            mobileQueue.put(new UserMobileEntity(user.getId(), loginDto.getClintId(), loginDto.getClientType()));//记录设备标示{
+        }
         return user;
     }
 
